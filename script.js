@@ -8,13 +8,20 @@ const clearChatButton = document.getElementById("deleteButton");
 let currentUserMessage = null;
 let isGeneratingResponse = false;
 
-const NETLIFY_FUNCTION_URL = '/.netlify/functions/openai';
 
 const requestApiResponse = async (incomingMessageElement) => {
     const messageTextElement = incomingMessageElement.querySelector(".message__text");
 
+    if (!currentUserMessage) {
+        console.error("Error: currentUserMessage is undefined.");
+        messageTextElement.innerText = "Error: Message is empty.";
+        return;
+    }
+
     try {
-        const response = await fetch(NETLIFY_FUNCTION_URL, {
+        incomingMessageElement.classList.add("message--loading");
+
+        const response = await fetch('https://alexr-ai.onrender.com//generate-response', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ prompt: currentUserMessage }),
@@ -22,30 +29,37 @@ const requestApiResponse = async (incomingMessageElement) => {
 
         if (!response.ok) {
             const errorText = await response.text();
-            throw new Error(`HTTP error! status: ${response.status}, message: ${errorText}`);
+            throw new Error(`HTTP error! Status: ${response.status}, Message: ${errorText}`);
         }
 
         const responseData = await response.json();
-        const responseText = responseData;
+        const responseText = responseData?.response || "No response received.";
         const parsedApiResponse = marked.parse(responseText);
         const rawApiResponse = responseText;
 
         showTypingEffect(rawApiResponse, parsedApiResponse, messageTextElement, incomingMessageElement);
 
-        let savedConversations = JSON.parse(localStorage.getItem("saved-api-chats")) || [];
-        savedConversations.push({
-            userMessage: currentUserMessage,
-            apiResponse: { choices: [{ message: { content: responseText } }] }
-        });
-        localStorage.setItem("saved-api-chats", JSON.stringify(savedConversations));
+        try {
+            let savedConversations = JSON.parse(localStorage.getItem("saved-api-chats")) || [];
+            savedConversations.push({
+                userMessage: currentUserMessage,
+                apiResponse: { choices: [{ message: { content: responseText } }] }
+            });
+            localStorage.setItem("saved-api-chats", JSON.stringify(savedConversations));
+        } catch (storageError) {
+            console.error("Error saving conversation history:", storageError);
+        }
+
     } catch (error) {
-        isGeneratingResponse = false;
-        messageTextElement.innerText = error.message;
+        console.error("Request Error:", error);
+        messageTextElement.innerText = `Error: ${error.message}`;
         messageTextElement.closest(".message").classList.add("message--error");
     } finally {
         incomingMessageElement.classList.remove("message--loading");
+        isGeneratingResponse = false;
     }
 };
+
 
 const loadSavedChatHistory = () => {
     const savedConversations = JSON.parse(localStorage.getItem("saved-api-chats")) || [];
