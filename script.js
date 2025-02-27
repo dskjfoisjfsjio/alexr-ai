@@ -171,6 +171,17 @@ document.querySelectorAll(".suggestions-item").forEach((suggestion) => {
     });
 });
 
+document.querySelectorAll(".copy-btn").forEach((button) => {
+    button.addEventListener("click", () => {
+        const codeBlock = button.previousElementSibling.querySelector("code");
+        navigator.clipboard.writeText(codeBlock.innerText).then(() => {
+            button.textContent = "Copied!";
+            setTimeout(() => (button.textContent = "Copy"), 2000);
+        });
+    });
+});
+
+
 document.addEventListener("click", ({ target }) => {
     const wrapper = document.querySelector(".prompt-wrapper");
     const shouldHide = target.classList.contains("prompt-input") || (wrapper.classList.contains("hide-controls") && (target.id === "add-file-btn" || target.id === "stop-response-btn"));
