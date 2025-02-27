@@ -1,92 +1,59 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-   <meta charset="UTF-8">
-   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/styles/github-dark.min.css">
-   <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-   <link rel="icon" type="image/png" href="assets/gemini.png">
-   <link rel="stylesheet" href="styles.css">
-   <title>Alexr AI</title>
-</head>
-
-
-<body>
-
-
-   <nav class="navbar">
-       <h3 class="navbar__logo">AlexR AI Beta</h3>
-       <button class="navbar__button" id="themeToggler"><i class='bx bx-sun'></i></button>
-   </nav>
-
-
-   <header class="header">
-       <div class="header__title">
-           <h1>Hello, There!</h1>
-           <h2>How can I help you today?</h2>
-       </div>
-       <div class="suggests">
-           <div class="suggests__item">
-               <p class="suggests__item-text">
-                   Give tips on helping kids finish their homework on time
-               </p>
-               <div class="suggests__item-icon">
-                   <i class='bx bx-stopwatch'></i>
-               </div>
-           </div>
-           <div class="suggests__item">
-               <p class="suggests__item-text">
-                   Help me write an out-of-office email
-               </p>
-               <div class="suggests__item-icon">
-                   <i class='bx bx-edit-alt'></i>
-               </div>
-           </div>
-           <div class="suggests__item">
-               <p class="suggests__item-text">
-                   Give me phrases to learn a new language
-               </p>
-               <div class="suggests__item-icon">
-                   <i class='bx bx-compass'></i>
-               </div>
-           </div>
-           <div class="suggests__item">
-               <p class="suggests__item-text">
-                   Show me how to build something by hand
-               </p>
-               <div class="suggests__item-icon">
-                   <i class='bx bx-wrench'></i>
-               </div>
-           </div>
-       </div>
-   </header>
-
-
-   <section class="chats"></section>
-
-
-   <section class="prompt">
-       <form action="#" class="prompt__form" novalidate>
-           <div class="prompt__input-wrapper">
-               <input type="text" placeholder="Enter a prompt here" class="prompt__form-input" required>
-               <button class="prompt__form-button" id="sendButton">
-                   <i class='bx bx-send'></i>
-               </button>
-               <button class="prompt__form-button" id="deleteButton">
-                   <i class='bx bx-trash'></i>
-               </button>
-           </div>
-       </form>
-       <p class="prompt__disclaim">
-           Alexr AI may be slow because of the limited server we use its currently in beta so expect bugs.
-       </p>
-   </section>
-
-
-   <script src="https://cdn.jsdelivr.net/npm/marked/marked.min.js"></script>
-   <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.9.0/highlight.min.js"></script>
-   <script src="script.js"></script>
-</body>
-
-
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Alexr AI | Beta</title>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@32,400,0,0" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <div class="container">
+      <header class="app-header">
+        <h1 class="heading">Hello, there</h1>
+        <h4 class="sub-heading">How can I help you today?</h4>
+      </header>
+      <ul class="suggestions">
+        <li class="suggestions-item">
+          <p class="text">Design a home office setup for remote work under $500.</p>
+          <span class="icon material-symbols-rounded">draw</span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">How can I level up my web development expertise in 2025?</p>
+          <span class="icon material-symbols-rounded">lightbulb</span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">Suggest some useful tools for debugging JavaScript code.</p>
+          <span class="icon material-symbols-rounded">explore</span>
+        </li>
+        <li class="suggestions-item">
+          <p class="text">Create a React JS component for the simple todo list app.</p>
+          <span class="icon material-symbols-rounded">code_blocks</span>
+        </li>
+      </ul>
+      <div class="chats-container"></div>
+      <div class="prompt-container">
+        <div class="prompt-wrapper">
+          <form action="#" class="prompt-form">
+            <input type="text" placeholder="Ask Alexr" class="prompt-input" required />
+            <div class="prompt-actions">
+              <div class="file-upload-wrapper">
+                <img src="#" class="file-preview" />
+                <input id="file-input" type="file" accept="image/*, .pdf, .txt, .csv" hidden />
+                <button type="button" class="file-icon material-symbols-rounded">description</button>
+                <button id="cancel-file-btn" type="button" class="material-symbols-rounded">close</button>
+                <button id="add-file-btn" type="button" class="material-symbols-rounded">attach_file</button>
+              </div>
+              <button id="stop-response-btn" type="button" class="material-symbols-rounded">stop_circle</button>
+              <button id="send-prompt-btn" class="material-symbols-rounded">arrow_upward</button>
+            </div>
+          </form>
+          <button id="theme-toggle-btn" class="material-symbols-rounded">light_mode</button>
+          <button id="delete-chats-btn" class="material-symbols-rounded">delete</button>
+        </div>
+        <p class="disclaimer-text">Alexr AI may be slow because of the limited server we use its currently in beta so expect bugs.</p>
+      </div>
+    </div>
+    <script src="script.js"></script>
+  </body>
 </html>
