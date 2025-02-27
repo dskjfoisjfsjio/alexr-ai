@@ -4,15 +4,19 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alexr AI | Beta</title>
-    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@32,400,0,0" />
-    <link rel="stylesheet" href="styles.css" />
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@32,400,0,0" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <link rel="stylesheet" href="styles.css" />
   </head>
+  
   <body>
     <div class="container">
       <header class="app-header">
         <h1 class="heading">Hello, there</h1>
         <h4 class="sub-heading">How can I help you today?</h4>
       </header>
+      
       <ul class="suggestions">
         <li class="suggestions-item">
           <p class="text">Design a home office setup for remote work under $500.</p>
@@ -27,15 +31,18 @@
           <span class="icon material-symbols-rounded">explore</span>
         </li>
         <li class="suggestions-item">
-          <p class="text">Create a React JS component for the simple todo list app.</p>
+          <p class="text">Create a React JS component for a simple to-do list app.</p>
           <span class="icon material-symbols-rounded">code_blocks</span>
         </li>
       </ul>
+      
       <div class="chats-container"></div>
+      
       <div class="prompt-container">
         <div class="prompt-wrapper">
-          <form action="#" class="prompt-form">
+          <form class="prompt-form">
             <input type="text" placeholder="Ask Alexr" class="prompt-input" required />
+            
             <div class="prompt-actions">
               <div class="file-upload-wrapper">
                 <img src="#" class="file-preview" />
@@ -47,13 +54,26 @@
               <button id="stop-response-btn" type="button" class="material-symbols-rounded">stop_circle</button>
               <button id="send-prompt-btn" class="material-symbols-rounded">arrow_upward</button>
             </div>
+
+            <div class="code-container">
+                <pre class="code-block"><code class="language-javascript">
+            const greet = (name) => {
+                console.log(`Hello, ${name}!`);
+            };
+            greet("Alexander");
+                </code></pre>
+                <button class="copy-btn">Copy</button>
+            </div>
           </form>
+          
           <button id="theme-toggle-btn" class="material-symbols-rounded">light_mode</button>
           <button id="delete-chats-btn" class="material-symbols-rounded">delete</button>
         </div>
-        <p class="disclaimer-text">Alexr AI may be slow because of the limited server we use its currently in beta so expect bugs.</p>
+        
+        <p class="disclaimer-text">Alexr AI is in beta. Expect some bugs and slow responses.</p>
       </div>
     </div>
+
     <script src="script.js"></script>
   </body>
 </html>
