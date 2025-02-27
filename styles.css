@@ -224,42 +224,36 @@ body.chats-active .container :where(.app-header, .suggestions) {
   background: var(--secondary-hover-color);
 }
 
-.code-container {
+/* Code Block Styling */
+pre {
+   background: #1e1e2e;
+   padding: 15px;
+   border-radius: 10px;
+   overflow-x: auto;
    position: relative;
-   background: #1e1e1e;
-   padding: 12px;
-   border-radius: 8px;
-   margin: 16px 0;
-   overflow: auto;
-   box-shadow: 0 4px 10px rgba(0, 0, 0, 0.3);
-}
-
-.code-block {
-   color: #fff;
+ }
+ 
+ code {
    font-family: "Fira Code", monospace;
-   font-size: 14px;
-   white-space: pre-wrap;
-   word-wrap: break-word;
-}
-
-.copy-btn {
+   color: #cdd6f4;
+ }
+ 
+ .copy-btn {
    position: absolute;
    top: 10px;
    right: 10px;
-   background: #4CAF50;
-   color: white;
+   background: #2e2e3e;
+   color: #fff;
    border: none;
-   padding: 6px 10px;
+   padding: 5px 10px;
    cursor: pointer;
-   font-size: 12px;
-   border-radius: 4px;
-   transition: 0.3s;
-}
-
-.copy-btn:hover {
-   background: #45a049;
-}
-
+   border-radius: 5px;
+ }
+ 
+ .copy-btn:hover {
+   background: #44445a;
+ }
+ 
 
 .prompt-form .prompt-actions {
   gap: 5px;
