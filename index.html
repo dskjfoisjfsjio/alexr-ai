@@ -5,8 +5,9 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Alexr AI | Beta</title>
         <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@32,400,0,0" />
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/themes/prism-tomorrow.min.css">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/prism/1.29.0/prism.min.js"></script>
+        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+<script>hljs.highlightAll();</script>
         <link rel="stylesheet" href="styles.css" />
   </head>
   
@@ -55,15 +56,6 @@
               <button id="send-prompt-btn" class="material-symbols-rounded">arrow_upward</button>
             </div>
 
-            <div class="code-container">
-                <pre class="code-block"><code class="language-javascript">
-            const greet = (name) => {
-                console.log(`Hello, ${name}!`);
-            };
-            greet("Alexander");
-                </code></pre>
-                <button class="copy-btn">Copy</button>
-            </div>
           </form>
           
           <button id="theme-toggle-btn" class="material-symbols-rounded">light_mode</button>
