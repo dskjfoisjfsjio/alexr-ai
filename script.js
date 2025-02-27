@@ -171,17 +171,19 @@ document.querySelectorAll(".suggestions-item").forEach((suggestion) => {
     });
 });
 
-document.querySelectorAll(".copy-btn").forEach((button) => {
-    button.addEventListener("click", () => {
-        const codeBlock = button.previousElementSibling.querySelector("code");
-        navigator.clipboard.writeText(codeBlock.innerText).then(() => {
-            button.textContent = "Copied!";
-            setTimeout(() => (button.textContent = "Copy"), 2000);
-        });
+document.addEventListener("DOMContentLoaded", () => {
+      let copyBtn = document.createElement("button");
+      copyBtn.innerText = "Copy";
+      copyBtn.classList.add("copy-btn");
+      pre.appendChild(copyBtn);
+  
+      copyBtn.addEventListener("click", () => {
+        let code = pre.querySelector("code").innerText;
+        navigator.clipboard.writeText(code);
+        copyBtn.innerText = "Copied!";
+        setTimeout(() => (copyBtn.innerText = "Copy"), 2000);
+      });
     });
-});
-
-
 document.addEventListener("click", ({ target }) => {
     const wrapper = document.querySelector(".prompt-wrapper");
     const shouldHide = target.classList.contains("prompt-input") || (wrapper.classList.contains("hide-controls") && (target.id === "add-file-btn" || target.id === "stop-response-btn"));
