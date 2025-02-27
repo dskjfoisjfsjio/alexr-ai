@@ -21,7 +21,7 @@ const requestApiResponse = async (incomingMessageElement) => {
     try {
         incomingMessageElement.classList.add("message--loading");
 
-        const response = await fetch('https://alexr-ai.onrender.com//generate-response', {
+        const response = await fetch('https://alexr-ai.onrender.com/generate-response', {
             method: 'POST',
             headers: { 'Content-Type': 'application/json' },
             body: JSON.stringify({ prompt: currentUserMessage }),
