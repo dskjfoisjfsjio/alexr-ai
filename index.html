@@ -1,76 +1,99 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<html lang="en"><head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Alexr AI | Beta</title>
-        <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@32,400,0,0" />
-        <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
-        <link rel="icon" type="image/png" href="new logo.png">
-        <link rel="apple-touch-icon" href="new logo.png">
-        <meta property="og:title" content="Alexr AI - A 24/7 AI Assistant" />
-        <meta property="og:description" content="Have your curious thoughts answered by Alexr AI - Made by Michigan published by Alexr" />
-        <meta property="og:image" content="https://dskjfoisjfsjio.github.io/assets/new%20logo.png" />
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
-<script>hljs.highlightAll();</script>
-        <link rel="stylesheet" href="styles.css" />
-  </head>
-  
-  <body>
-    <div class="container">
-      <header class="app-header">
-        <h1 class="heading">Hello, there</h1>
-        <h4 class="sub-heading">How can I help you today?</h4>
-      </header>
-      
-      <ul class="suggestions">
-        <li class="suggestions-item">
-          <p class="text">Design a home office setup for remote work under $500.</p>
-          <span class="icon material-symbols-rounded">draw</span>
-        </li>
-        <li class="suggestions-item">
-          <p class="text">How can I level up my web development expertise in 2025?</p>
-          <span class="icon material-symbols-rounded">lightbulb</span>
-        </li>
-        <li class="suggestions-item">
-          <p class="text">Suggest some useful tools for debugging JavaScript code.</p>
-          <span class="icon material-symbols-rounded">explore</span>
-        </li>
-        <li class="suggestions-item">
-          <p class="text">Create a React JS component for a simple to-do list app.</p>
-          <span class="icon material-symbols-rounded">code_blocks</span>
-        </li>
-      </ul>
-      
-      <div class="chats-container"></div>
-      
-      <div class="prompt-container">
-        <div class="prompt-wrapper">
-          <form class="prompt-form">
-            <input type="text" placeholder="Ask Alexr" class="prompt-input" required />
-            
-            <div class="prompt-actions">
-              <div class="file-upload-wrapper">
-                <img src="#" class="file-preview" />
-                <input id="file-input" type="file" accept="image/*, .pdf, .txt, .csv" hidden />
-                <button type="button" class="file-icon material-symbols-rounded">description</button>
-                <button id="cancel-file-btn" type="button" class="material-symbols-rounded">close</button>
-                <button id="add-file-btn" type="button" class="material-symbols-rounded">attach_file</button>
-              </div>
-              <button id="stop-response-btn" type="button" class="material-symbols-rounded">stop_circle</button>
-              <button id="send-prompt-btn" class="material-symbols-rounded">arrow_upward</button>
-            </div>
-
-          </form>
-          
-          <button id="theme-toggle-btn" class="material-symbols-rounded">light_mode</button>
-          <button id="delete-chats-btn" class="material-symbols-rounded">delete</button>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Material+Symbols+Rounded:opsz,wght,FILL,GRAD@32,400,0,0">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/styles/night-owl.min.css">
+    <link rel="icon" type="image/png" href="new logo.png">
+    <link rel="apple-touch-icon" href="new logo.png">
+    <meta property="og:title" content="Alexr AI - A 24/7 AI Assistant">
+    <meta property="og:description" content="Have your curious thoughts answered by Alexr AI - Made by Michigan published by Alexr">
+    <meta property="og:image" content="https://dskjfoisjfsjio.github.io/assets/new%20logo.png">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/highlight.js/11.7.0/highlight.min.js"></script>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <!-- Chat History Sidebar -->
+    <aside class="sidebar">
+        <div class="sidebar-header">
+            <h2 class="sidebar-title">Alexr AI</h2>
+            <button id="close-sidebar-btn" class="material-symbols-rounded">close</button>
         </div>
-        
-        <p class="disclaimer-text">Alexr AI is in beta. Expect some bugs and slow responses.</p>
-      </div>
-    </div>
+        <button id="new-chat-btn" class="new-chat-btn">
+            <span class="material-symbols-rounded">add</span>
+            New Chat
+        </button>
+        <div class="chat-history-container">
+            <h3>Recent</h3>
+            <ul id="chat-history-list" class="chat-history-list">
+                <!-- Chat history items will be populated by JavaScript -->
+            </ul>
+        </div>
+        <div class="sidebar-footer">
+            <div id="user-id-container" class="user-id-container">User ID: <span id="user-id-display"></span></div>
+            <button id="theme-toggle-btn" class="material-symbols-rounded">light_mode</button>
+            <button id="delete-all-chats-btn" class="material-symbols-rounded">delete</button>
+        </div>
+    </aside>
 
-    <script src="script.js"></script>
-  </body>
-</html>
+    <!-- Main Chat Area -->
+    <div class="main-content">
+        <header class="mobile-header">
+            <button id="open-sidebar-btn" class="material-symbols-rounded">menu</button>
+            <h1 class="mobile-chat-title">Alexr AI</h1>
+        </header>
+
+        <div class="container">
+            <header class="app-header">
+                <h1 class="heading">Hello, there</h1>
+                <h4 class="sub-heading">How can I help you today?</h4>
+            </header>
+
+            <ul class="suggestions">
+                 <li class="suggestions-item">
+                    <p class="text">Design a home office setup for remote work under $500.</p>
+                    <span class="icon material-symbols-rounded">draw</span>
+                </li>
+                <li class="suggestions-item">
+                    <p class="text">How can I level up my web development expertise in 2025?</p>
+                    <span class="icon material-symbols-rounded">lightbulb</span>
+                </li>
+                <li class="suggestions-item">
+                    <p class="text">Suggest some useful tools for debugging JavaScript code.</p>
+                    <span class="icon material-symbols-rounded">explore</span>
+                </li>
+                <li class="suggestions-item">
+                    <p class="text">Create a React JS component for a simple to-do list app.</p>
+                    <span class="icon material-symbols-rounded">code_blocks</span>
+                </li>
+            </ul>
+
+            <div class="chats-container"></div>
+
+            <div class="prompt-container">
+                <div class="prompt-wrapper">
+                    <form class="prompt-form">
+                        <input type="text" placeholder="Ask Alexr" class="prompt-input" required="">
+                        <div class="prompt-actions">
+                             <div class="file-upload-wrapper">
+                                <img src="#" class="file-preview">
+                                <input id="file-input" type="file" accept="image/*, .pdf, .txt, .csv" hidden="">
+                                <button type="button" class="file-icon material-symbols-rounded">description</button>
+                                <button id="cancel-file-btn" type="button" class="material-symbols-rounded">close</button>
+                                <button id="add-file-btn" type="button" class="material-symbols-rounded">attach_file</button>
+                            </div>
+                            <button id="stop-response-btn" type="button" class="material-symbols-rounded">stop_circle</button>
+                            <button id="send-prompt-btn" class="material-symbols-rounded">arrow_upward</button>
+                        </div>
+                    </form>
+                </div>
+                <p class="disclaimer-text">Alexr AI is in beta. Expect some bugs and slow responses.</p>
+            </div>
+        </div>
+    </div>
+    
+    <script>hljs.highlightAll();</script>
+    <script type="module" src="script.js"></script>
+
+
+</body></html>
