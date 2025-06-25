@@ -381,4 +381,6 @@ function main() {
     themeToggleBtnSidebar.textContent = themeIcon;
 }
 
-main();
+// **FIX**: Wrap the main function call in a DOMContentLoaded listener.
+// This ensures that the Firebase scripts from the HTML have loaded before this script runs.
+window.addEventListener('DOMContentLoaded', main);
